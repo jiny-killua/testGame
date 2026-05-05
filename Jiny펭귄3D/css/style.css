@@ -1,0 +1,241 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #050e1e;
+  overflow: hidden;
+  font-family: 'Segoe UI', 'Apple SD Gothic Neo', sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+
+/* ── Full-screen canvas ── */
+#canvas {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  touch-action: none;
+}
+
+/* ── HUD overlay ── */
+#hud {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+#hud-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 10px 16px;
+  background: rgba(10, 20, 40, 0.72);
+  backdrop-filter: blur(4px);
+}
+
+.hud-block { text-align: left; }
+.hud-block.center { text-align: center; }
+.hud-block.right  { text-align: right; }
+
+.hud-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #8899bb;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.hud-value {
+  font-size: 22px;
+  font-weight: 900;
+  color: #ffdd44;
+  line-height: 1.1;
+}
+.hud-block.center .hud-value { color: #66eebb; }
+.hud-block.right  .hud-value { color: #ff9966; }
+
+#fish-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 14px;
+  background: rgba(10, 20, 40, 0.6);
+}
+.fish-label { font-size: 12px; color: #aaa; }
+
+#fish-gauge {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+  height: 20px;
+}
+#fish-gauge span { font-size: 17px; transition: opacity 0.15s; }
+
+/* Super bar (replaces fish icons when super mode active) */
+.super-bar-wrap {
+  width: 130px; height: 10px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 5px; overflow: hidden;
+}
+.super-bar-fill {
+  height: 100%; border-radius: 5px;
+  background: linear-gradient(90deg, #ffdd00, #ff8800);
+  transition: width 0.1s;
+}
+
+#status-row {
+  padding: 2px 14px 6px;
+  display: flex;
+  gap: 12px;
+}
+.status-badge {
+  font-size: 12px;
+  color: #ffdd44;
+  background: rgba(10,20,40,0.6);
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+/* ── Fullscreen overlay (Title / Pause / GameOver) ── */
+#overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  background: rgba(5, 12, 30, 0.88);
+  backdrop-filter: blur(6px);
+}
+
+.screen {
+  text-align: center;
+  color: #fff;
+  padding: 20px;
+  max-width: 440px;
+  width: 90%;
+}
+
+.screen .big-emoji { font-size: 72px; line-height: 1; margin-bottom: 8px; }
+
+.screen .title {
+  font-size: 44px;
+  font-weight: 900;
+  color: #eef8ff;
+  text-shadow: 0 0 20px #44ccff;
+  margin-bottom: 4px;
+}
+
+.screen .subtitle {
+  font-size: 15px;
+  color: #88ccee;
+  margin-bottom: 28px;
+}
+
+.screen .overlay-btn {
+  display: inline-block;
+  background: #44ccff;
+  color: #003344;
+  font-size: 20px;
+  font-weight: 800;
+  padding: 14px 40px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin: 6px;
+  min-width: 160px;
+  transition: transform 0.1s, background 0.1s;
+}
+.screen .overlay-btn:hover { background: #66ddff; transform: scale(1.04); }
+.screen .overlay-btn.secondary { background: rgba(100,120,160,0.7); color: #eef0f5; }
+
+.controls-hint {
+  margin-top: 22px;
+  font-size: 13px;
+  color: rgba(200, 220, 240, 0.65);
+  line-height: 1.9;
+}
+
+.game-over-title {
+  font-size: 48px;
+  font-weight: 900;
+  color: #ff6666;
+  text-shadow: 0 0 14px #ff0000;
+  margin-bottom: 6px;
+}
+
+.new-best {
+  font-size: 18px;
+  color: #ffdd00;
+  font-weight: 700;
+  margin: 4px 0 10px;
+}
+
+.score-row {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 14px 0 22px;
+}
+.score-row .lbl { font-size: 13px; color: #aaccee; margin-bottom: 2px; }
+.score-row .val { font-size: 28px; font-weight: 900; color: #ffdd44; }
+.score-row .val.best-val { color: #66eebb; }
+
+/* Pause screen */
+.pause-title { font-size: 42px; font-weight: 900; color: #ffffff; margin-bottom: 12px; }
+.pause-hint  { font-size: 16px; color: #88ccee; }
+
+/* ── Mobile touch buttons ── */
+#mobile-btns {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: 120px;
+  display: flex;
+  gap: 6px;
+  padding: 8px 8px;
+  background: rgba(5, 15, 35, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 15;
+}
+
+.mob-btn {
+  flex: 1;
+  background: rgba(68, 180, 255, 0.22);
+  border: 1px solid rgba(68, 180, 255, 0.35);
+  border-radius: 12px;
+  color: rgba(200, 240, 255, 0.85);
+  font-size: 30px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: background 0.1s;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+.mob-btn:active { background: rgba(68, 180, 255, 0.45); }
+
+.mob-btn.jump-btn {
+  background: rgba(80, 220, 80, 0.2);
+  border-color: rgba(80, 220, 80, 0.35);
+  font-size: 20px;
+  color: rgba(200, 255, 200, 0.85);
+  line-height: 1.3;
+}
+.mob-btn.jump-btn small { font-size: 10px; opacity: 0.6; display: block; }
+.mob-btn.jump-btn:active { background: rgba(80, 220, 80, 0.45); }
+
+/* ── Pause button ── */
+#pause-btn {
+  position: fixed;
+  top: 12px; right: 12px;
+  z-index: 15;
+  background: rgba(10, 20, 40, 0.7);
+  border: 1px solid rgba(100, 160, 220, 0.4);
+  color: #cde;
+  font-size: 16px;
+  font-weight: 900;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  letter-spacing: 2px;
+}

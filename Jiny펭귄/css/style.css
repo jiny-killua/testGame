@@ -1,0 +1,30 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #050e1e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: 'Segoe UI', 'Apple SD Gothic Neo', sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+#game-container {
+  position: relative;
+  box-shadow: 0 0 40px rgba(68, 180, 255, 0.3);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+canvas {
+  display: block;
+  /* Scale down on small screens */
+  max-height: 95vh;
+  max-width: 95vw;
+  width: auto;
+  height: auto;
+  touch-action: none;
+}

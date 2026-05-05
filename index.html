@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jiny 테스트 프로젝트</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+    }
+
+    .container {
+      text-align: center;
+      padding: 60px 40px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 6px 18px;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      color: #a0c4ff;
+    }
+
+    h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      background: linear-gradient(90deg, #a0c4ff, #c9b1ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      font-size: 17px;
+      color: rgba(255, 255, 255, 0.55);
+      margin-bottom: 56px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 28px 40px;
+      border-radius: 16px;
+      text-decoration: none;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      min-width: 220px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+    }
+
+    .btn-1 {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      box-shadow: 0 8px 32px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-1:hover {
+      box-shadow: 0 12px 40px rgba(102, 126, 234, 0.6);
+    }
+
+    .btn-2 {
+      background: linear-gradient(135deg, #f093fb, #f5576c);
+      box-shadow: 0 8px 32px rgba(240, 147, 251, 0.4);
+    }
+
+    .btn-2:hover {
+      box-shadow: 0 12px 40px rgba(240, 147, 251, 0.6);
+    }
+
+    .btn-icon {
+      font-size: 36px;
+    }
+
+    .btn-label {
+      font-size: 18px;
+    }
+
+    .btn-desc {
+      font-size: 12px;
+      font-weight: 400;
+      opacity: 0.75;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="badge">Jiny 테스트 중인 프로젝트</div>
+    <h1>Project Hub</h1>
+    <p class="subtitle">시작할 프로젝트를 선택하세요</p>
+
+    <div class="buttons">
+      <a href="Jiny펭귄3D/index.html" class="btn btn-1">
+        <span class="btn-icon">🐧</span>
+        <span class="btn-label">Jiny펭귄3D 시작</span>
+        <span class="btn-desc">3D 펭귄 프로젝트</span>
+      </a>
+      <a href="Jiny펭귄3D_Gemma/index.html" class="btn btn-2">
+        <span class="btn-icon">🤖</span>
+        <span class="btn-label">Jiny펭귄3D_Gemma 시작</span>
+        <span class="btn-desc">Gemma AI 연동 버전</span>
+      </a>
+    </div>
+  </div>
+</body>
+</html>

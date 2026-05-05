@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"c:/Users/Jiny/Desktop/원진 스터디 자료/샘플 코딩/testGame/Jiny펭귄3D/css\")",
+      "Bash(mkdir -p \"c:/Users/Jiny/Desktop/원진 스터디 자료/샘플 코딩/testGame/Jiny펭귄3D/js\")"
+    ]
+  }
+}

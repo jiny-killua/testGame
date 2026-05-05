@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Jiny펭귄 3D</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Three.js renders here (full screen) -->
+  <canvas id="canvas"></canvas>
+
+  <!-- DOM HUD overlay (shown during gameplay) -->
+  <div id="hud" style="display:none">
+    <div id="hud-top">
+      <div class="hud-block">
+        <div class="hud-label">SCORE</div>
+        <div class="hud-value" id="score-val">0</div>
+      </div>
+      <div class="hud-block center">
+        <div class="hud-label">BEST</div>
+        <div class="hud-value" id="best-val">0</div>
+      </div>
+      <div class="hud-block right">
+        <div class="hud-label">LEVEL</div>
+        <div class="hud-value" id="level-val">1</div>
+      </div>
+    </div>
+
+    <div id="fish-row">
+      <span class="fish-label">🐟</span>
+      <div id="fish-gauge"></div>
+    </div>
+
+    <div id="status-row">
+      <span id="magnet-status" class="status-badge" style="display:none">🧲 <span id="magnet-timer"></span>s</span>
+      <span id="super-status"  class="status-badge" style="display:none">⭐ SUPER <span id="super-timer"></span>s</span>
+    </div>
+  </div>
+
+  <!-- Fullscreen overlay: Title / Pause / GameOver -->
+  <div id="overlay">
+    <!-- filled by UI class -->
+  </div>
+
+  <!-- Mobile touch buttons (always in DOM, visible during gameplay) -->
+  <div id="mobile-btns" style="display:none">
+    <button id="btn-left"  class="mob-btn">◀</button>
+    <button id="btn-jump"  class="mob-btn jump-btn">JUMP<br><small>길게→슬라이드</small></button>
+    <button id="btn-right" class="mob-btn">▶</button>
+  </div>
+
+  <!-- Pause button (top-right, visible during gameplay) -->
+  <button id="pause-btn" style="display:none">II</button>
+
+  <!-- Three.js r160 (local copy — works without a server or internet) -->
+  <script src="js/three.min.js"></script>
+
+  <!-- Game scripts (order matters — globals used across files) -->
+  <script src="js/utils.js"></script>
+  <script src="js/scene.js"></script>
+  <script src="js/camera.js"></script>
+  <script src="js/track.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
