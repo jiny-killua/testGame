@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Jiny펭귄 - Prototype</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="game-container">
+        <!-- HUD Overlay -->
+        <div id="hud">
+            <div id="score-container">
+                점수: <span id="score">0</span> | 최고: <span id="high-score">0</span>
+            </div>
+            <div id="zone-container">Zone 1</div>
+        </div>
+
+        <!-- Canvas will be injected here by renderer.js -->
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
